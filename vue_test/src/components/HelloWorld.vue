@@ -3,7 +3,7 @@
    {{a}}
   </div>
   <div>
-   {{ b }}
+   {{ b }}---{{ ccc }}11
   </div>
   <div>
    {{ c }}
@@ -21,13 +21,24 @@
 <script setup>
   import myCompo from "./c/myCompo.vue";
   import { ref,reactive,computed,watch,watchEffect,onMounted, toRef} from "vue";
+
+  let ccc = reactive([])
   onMounted(()=>{
     let sss = ''
     sss = document.getElementById('box')
     console.log(sss)
+    setTimeout(()=>{
+     ccc = ccc.push({name:'111'})
+     console.log(ccc,"///")
+     // b = Object.assign(b,{name:9999999,age:"8888888"})
+     // b = reactive({name:'9999999999999999'})
+     b = reactive({name:'333333333333333333333'})
+     b = reactive({name:'999'})
+    },2000)
+    
   })
   let a = ref('111')
-  let b = reactive({name:999})
+  let b ={name:999}
   let c = computed(()=>{
      return b.name+100
    })
